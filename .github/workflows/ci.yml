@@ -1,0 +1,15 @@
+# Nome do workflow (vai aparecer na aba "Actions" do GitHub)
+name: Olá Mundo
+
+# Define o gatilho (evento) que inicia o workflow
+# Nesse caso, sempre que for feito um push no repositório
+on: [push]
+
+jobs: # Bloco que contém todos os trabalhos (jobs) do workflow
+  dizer-ola: # Identificador do job
+    # Runner que executará o job (um servidor com Ubuntu)
+    runs-on: ubuntu-latest
+
+    steps: # Lista de passos a serem executados
+      - name: Passo 1 - Mostrar mensagem # Nome do passo (ajuda a identificar nos logs)
+        run: echo "Olá Mundo, este é meu primeiro workflow no GitHub Actions!" # Comando que será executado
