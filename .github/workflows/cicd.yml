@@ -1,0 +1,20 @@
+# Nome do workflow (vai aparecer na aba "Actions" do GitHub)
+name: CI - Build e Teste da Imagem Docker
+
+# Define o gatilho (evento) que inicia o workflow
+# Nesse caso, sempre que for feito um push no repositório
+on: [push]
+
+jobs: # Bloco que contém todos os trabalhos (jobs) do workflow
+  build_and_test: # Identificador do job
+    # Runner que executará o job (um servidor com Ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Baixar o código do repositório
+        uses: actions/checkout@v3
+
+      - name: 2. Construir a imagem Docker
+        run: docker build -t app-teste:local .
+      
+      - name: 3. Executar o container para validar
+        run: docker run --rm app-teste:local
